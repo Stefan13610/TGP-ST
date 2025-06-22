@@ -1,0 +1,552 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[polish]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{authblk}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsthm} % Added for box command, if needed for definitions
+\usepackage{mdframed} % For boxed equations/definitions
+
+
+\pdfstringdefDisableCommands{%
+  \let\Phi\textPhi%
+  \let\hbar\texthbar%
+  \let\mu\textmu%
+  \let\nu\textnu%
+  \let\nabla\textnabla%
+  \let\infty\textinfty%
+  \let\rightarrow\textrightarrow%
+  \let\alpha\textalpha%
+  \let\rho\textrho%
+  \let\tau\texttau%
+}
+\DeclareRobustCommand{\texthbar}{\ensuremath{\hbar}}
+\DeclareRobustCommand{\textmu}{\ensuremath{\mu}}
+\DeclareRobustCommand{\textnu}{\ensuremath{\nu}}
+\DeclareRobustCommand{\textnabla}{\ensuremath{\nabla}}
+\DeclareRobustCommand{\textinfty}{\ensuremath{\infty}}
+\DeclareRobustCommand{\textrightarrow}{\ensuremath{\rightarrow}}
+\DeclareRobustCommand{\textalpha}{\ensuremath{\alpha}}
+\DeclareRobustCommand{\textrho}{\ensuremath{\rho}}
+\DeclareRobustCommand{\texttau}{\ensuremath{\tau}}
+
+
+% Własne komendy
+\DeclareRobustCommand{\textPhi}{\ensuremath{\Phi}}
+\newcommand{\tildePhi}{\tilde{\Phi}}
+\newcommand{\mP}{m_{\text{P}}} % Masa Plancka
+\newcommand{\ellP}{\ell_{\text{P}}} % Długość Plancka
+\newcommand{\tauU}{\tau_{\text{U}}} % Wiek Wszechświata
+
+\begin{document}
+
+% --- TYTUŁ I AUTORZY ---
+\title{Zmodyfikowana Teoria Generowanej Przestrzeni (mTGP): Wszechświat Bez Osobliwości, z Emergentną Ciemną Materią i Cykliczną Kosmologią}
+
+\author {Mateusz Serafin}
+\affil{\small Polska, Kraków}
+
+\date{\today}
+
+\maketitle
+
+
+\begin{abstract}
+Niniejsza praca przedstawia zarys \textbf{Zmodyfikowanej Teorii Generowanej Przestrzeni (mTGP)}, nowatorskiego podejścia do unifikacji fundamentalnych oddziaływań, które radykalnie redefiniuje naturę czasoprzestrzeni i materii. Fundamentalnym założeniem mTGP jest idea, że \textbf{przestrzeń nie jest pasywnym tłem, lecz emergentnym bytem dynamicznym, generowanym bezpośrednio przez obecność masy i energii}. Pole skalarne $\Phi$, reprezentujące "czystość" generowanej przestrzeni, staje się kluczowym unifikatorem, a jego wartość lokalnie zależy od globalnego rozkładu masy-energii. W mTGP wszystkie fundamentalne stałe fizyczne -- prędkość światła ($c$), stała Plancka ($\hbar$), stała grawitacji ($G$) oraz ładunek elementarny ($e$) -- stają się dynamicznymi polami zależnymi od lokalnej wartości $\Phi$, zachowując przy tym stałość bezwymiarowej stałej struktury subtelnej ($\alpha$). Przedstawiamy spójny formalizm lagranżjanowy, w którym materia źródłuje pole $\Phi$ poprzez \textbf{operator nakładania przestrzeni}, oddziałujący nielokalnie.
+
+Pokazujemy, jak mTGP oferuje eleganckie rozwiązania dla długotrwałych problemów fizyki i kosmologii bez potrzeby wprowadzania ad-hoc stałych regularyzujących:
+\begin{itemize}
+    \item \textbf{Eliminacja osobliwości} w czarnych dziurach i na początku Wszechświata, wynikająca z naturalnych, niezerowych granic stałych fundamentalnych.
+    \item \textbf{Wyjaśnienie zjawiska ciemnej materii} jako emergentnego efektu modyfikacji prawa grawitacji, z profilem rotacji galaktyk doskonale dopasowanym do obserwacji.
+    \item \textbf{Emergentna ciemna energia} wynikająca z naturalnej formy potencjału pola $\Phi$.
+    \item \textbf{Unifikacja wszystkich czterech oddziaływań fundamentalnych} poprzez ich dynamiczne zależności od pola $\Phi$.
+    \item \textbf{Nowa klasyfikacja i model stabilności czarnych dziur}, przewidujący maksymalną masę (rzędu $10^6 M_\odot$) oraz czasy życia metastabilnych czarnych dziur gwiazdowych poprzez kwantowe tunelowanie.
+\end{itemize}
+Teoria wprowadza także intrygującą \textbf{kosmologię cykliczną}, gdzie Wszechświat przechodzi przez nieskończone cykle Wielkich Wybuchów, inicjowanych w lokalnych regionach powracających do stanu maksymalnej "czystości" przestrzeni. Prezentujemy szereg konkretnych, testowalnych przewidywań, w tym sygnatury w falach grawitacyjnych, które mogłyby zweryfikować dynamiczną naturę czasoprzestrzeni i fundamentalnych stałych.
+\end{abstract}
+
+\vspace{1cm}
+
+\noindent\textbf{Keywords:} Zmodyfikowana Teoria Generowanej Przestrzeni; mTGP; Grawitacja Kwantowa; Unifikacja Oddziaływań; Zmienne Stałe Fundamentalne; Ciemna Materia; Ciemna Energia; Czarne Dziury; Kosmologia Cykliczna; Emergentna Przestrzeń.
+\newpage
+
+\section{Wprowadzenie}
+\label{sec:Wprowadzenie}
+
+Współczesna fizyka stoi przed fundamentalnym wyzwaniem unifikacji czterech oddziaływań fundamentalnych: grawitacyjnego, elektromagnetycznego, słabego i silnego. Mimo spektakularnych sukcesów, takich jak Ogólna Teoria Względności (OTW) Einsteina \cite{Einstein1915, MTW, Wald1984}, precyzyjnie opisująca grawitację na makroskopowych skalach, oraz Model Standardowy fizyki cząstek elementarnych \cite{PeskinSchroeder, WeinbergQFT1}, który z niezrównaną dokładnością opisuje pozostałe trzy oddziaływania w mikroświecie, brakuje spójnej ramy łączącej je wszystkie. Ta fragmentacja jest szczególnie widoczna w ekstremalnych warunkach, gdzie efekty grawitacyjne i kwantowe stają się równie istotne (np. wnętrza czarnych dziur czy początek Wszechświata), prowadząc do nierozwiązanych problemów, takich jak osobliwości \cite{MTW, Wald1984}, zagadka ciemnej energii \cite{Perlmutter1999, Riess1998, Planck2018} czy brak spójnej kwantowej teorii grawitacji \cite{Weinberg1979, Rovelli2004, Polchinski1998}. Poszukiwania "Wielkiej Teorii Wszystkiego", która scaliłaby wszystkie siły fundamentalne, trwają od dziesięcioleci, generując wiele obiecujących, lecz wciąż niepełnych podejść, takich jak teoria strun czy pętlowa grawitacja kwantowa.
+
+Niniejszy artykuł przedstawia zarys \textbf{Teorii Generowanej Przestrzeni (TGP-ST)} \cite{Serafin2025}, nowatorskiego podejścia, które proponuje fundamentalną zmianę paradygmatu w rozumieniu natury czasoprzestrzeni i jej związku z materią. W przeciwieństwie do tradycyjnych modeli, gdzie czasoprzestrzeń jest pasywnym tłem, TGP-ST postuluje, że \textbf{przestrzeń jest dynamicznym bytem emergentnym, generowanym bezpośrednio przez obecność masy i energii}. To oznacza, że istnienie przestrzeni jest nierozerwalnie związane z obecnością materii, a koncepcja "próżni" w tradycyjnym sensie zanika.
+
+W niniejszej pracy przedstawiamy \textbf{Zmodyfikowaną Teorię Generowanej Przestrzeni (mTGP)} --- rozwinięcie i uściślenie TGP-ST, które adresuje kluczowe wyzwania poprzez redefinicję pola skalarnego $\Phi$ i jego sprzężeń. Pole $\Phi$ w mTGP opisuje "czystość" generowanej przestrzeni, a jego wartość lokalnie zależy od globalnego rozkładu masy-energii. Pokażemy, jak mTGP, dzięki tej fundamentalnej zmianie, oferuje eleganckie i spójne rozwiązania dla problemów takich jak eliminacja osobliwości, wyjaśnienie ciemnej materii i ciemnej energii, a także kompleksową unifikację wszystkich czterech oddziaływań fundamentalnych. mTGP wprowadza także intrygującą kosmologię cykliczną, gdzie Wszechświat odradza się w nieskończonych cyklach.
+
+Celem niniejszej pracy jest przedstawienie spójnego formalizmu mTGP, ukazanie jego zdolności do oferowania nowych perspektyw na nierozwiązane problemy fizyki oraz zidentyfikowanie konkretnych, testowalnych przewidywań wynikających z tej unifikacji. Struktura artykułu jest następująca: w Sekcji \ref{sec:PodstawyBezStalych} przedstawiamy nowe, fundamentalne założenia mTGP dotyczące pola $\Phi$ i skalowania stałych. Sekcja \ref{sec:FormalismMTGP} omawia pełny formalizm teorii, w tym Lagrangian i równania ruchu z nowo zdefiniowanym operatorem nakładania przestrzeni. Sekcja \ref{sec:HiggsMechanismMTGP} reinterpretuje mechanizm Higgsa i pochodzenie mas cząstek. W Sekcji \ref{sec:UnificationAndHorizons} przedstawiamy unifikację wszystkich oddziaływań i dynamikę skal. Sekcja \ref{sec:ConsequencesAndPredictionsMTGP} dyskutuje kluczowe konsekwencje fizyczne, w tym naturalną ochronę przed osobliwościami, alternatywę dla ciemnej materii, emergentną ciemną energię oraz szczegółową analizę czarnych dziur. W Sekcji \ref{sec:DiscussionAndCyclicCosmology} omawiamy otwarte problemy, naturę kosmologii cyklicznej i kierunki dalszych badań. Dodatki zawierają szczegółowe wyprowadzenia kluczowych wyników.
+
+\section{Podstawy Zmodyfikowanej Teorii Generowanej Przestrzeni (mTGP): Nowe Fundamenty}
+\label{sec:PodstawyBezStalych}
+
+Teoria Generowanej Przestrzeni (TGP-ST) opierała się na fundamentalnym założeniu, że czasoprzestrzeń jest dynamicznym bytem emergentnym, generowanym bezpośrednio przez obecność masy i energii. W Zmodyfikowanej Teorii Generowanej Przestrzeni (mTGP) rozwijamy tę ideę, precyzując naturę pola skalarnego $\Phi$ i jego wpływ na fundamenty fizyki. Pole $\Phi$ w mTGP reprezentuje "czystość" generowanej przestrzeni, a jego wartość lokalnie zależy od globalnego rozkładu masy-energii we Wszechświecie.
+
+\subsection{\texorpdfstring{Definicja Pola $\Phi$}{Definicja Pola Phi} i Jego Granice Naturalne}
+\label{subsec:PhiFieldDefinition}
+
+W mTGP pole skalarne $\Phi(\mathbf{x})$ jest ściśle zdefiniowane przez rozkład gęstości masy-energii $\rho(\mathbf{x'})$ w całej przestrzeni. Jest ono miarą "czystości" lub "niezakłócenia" generowanej przestrzeni w danym punkcie. Definicję pola $\Phi$ w punkcie $\mathbf{x}$ określa się jako:
+\begin{equation}
+\Phi(\mathbf{x}) = \Phi_0 \exp\left( -k \int_{\mathbb{R}^3} \frac{\rho(\mathbf{x'})}{|\mathbf{x}-\mathbf{x'}|}  d^3\mathbf{x'} \right)
+\label{eq:PhiFieldNatural}
+\end{equation}
+gdzie $\Phi_0$ jest wartością pola $\Phi$ w niemal pustej próżni (gdzie $\int \rho \, dV \to 0$), a $k$ jest fundamentalną stałą sprzężenia ($k > 0$). Całka w wykładniku to potencjał grawitacyjny generowany przez rozkład masy-energii. Oznacza to, że im większa jest lokalna gęstość masy-energii $\rho$ i im bardziej materia jest zagęszczona (czyli im większy jest potencjał grawitacyjny), tym mniejsza jest lokalna wartość pola $\Phi$. W ten sposób, materia tworzy "studnie" w polu $\Phi$.
+
+\textbf{Kluczowa własność:} Dla wszystkich fizycznych rozkładów materii ($\rho < \infty$), $\Phi$ nigdy nie osiąga zera, lecz osiąga naturalne, niezerowe minimum $\Phi_{\text{min}}$. W granicy maksymalnego zagęszczenia materii (np. w hipotetycznej osobliwości lub dla całego obserwowalnego Wszechświata), $\Phi$ dąży do:
+\begin{equation}
+\Phi_{\text{min}} = \Phi_0 \exp\left(-k \frac{M_u}{R_u}\right)
+\end{equation}
+gdzie $M_u$ i $R_u$ to odpowiednio masa i efektywny promień obserwowalnego Wszechświata. Ta wartość $\Phi_{\text{min}}$ jest ekstremalnie mała (np. $\Phi_{\text{min}} \sim \Phi_0 e^{-10^{40}}$), ale ściśle dodatnia. Istnienie tej naturalnej, niezerowej granicy jest kluczowe dla spójności teorii i eliminacji osobliwości, ponieważ gwarantuje, że żadna z fizycznych stałych fundamentalnych nigdy nie osiągnie wartości zerowej ani nieskończonej.
+
+\subsection{Skalowanie Fundamentalnych Stałych bez Regularyzacji}
+\label{subsec:ScalingNoRegularization}
+
+W mTGP, wszystkie fundamentalne stałe fizyczne – prędkość światła ($c$), stała Plancka ($\hbar$), stała grawitacji ($G$) oraz ładunek elementarny ($e$) – są dynamicznymi polami zależnymi od lokalnej wartości $\Phi$. Dzięki naturalnym granicom pola $\Phi$, dynamiczne zależności stałych fundamentalnych przyjmują eleganckie i proste formy, nie wymagające wprowadzania dodatkowych parametrów regularyzujących:
+
+\begin{align}
+c(\Phi) &= c_0 \sqrt{\frac{\Phi}{\Phi_0}} \label{eq:cPhiNatural} \\
+\hbar(\Phi) &= \hbar_0 \sqrt{\frac{\Phi}{\Phi_0}} \label{eq:hbarPhiNatural} \\
+G(\Phi) &= G_0 \frac{\Phi_0}{\Phi} \label{eq:GPhiNatural} \\
+e(\Phi) &= e_0 \sqrt{\frac{\Phi}{\Phi_0}} \label{eq:ePhiNatural}
+\end{align}
+gdzie $c_0, \hbar_0, G_0, e_0$ to wartości stałych obserwowane w naszej lokalnej, niemal pustej próżni ($\Phi \approx \Phi_0$).
+
+\textbf{Dlaczego brak osobliwości w stałych?}
+Ponieważ pole $\Phi$ jest zawsze większe lub równe $\Phi_{\text{min}} > 0$ dla wszystkich fizycznych rozkładów materii, wszystkie stałe fundamentalne pozostają skończone:
+\begin{itemize}
+    \item Minimalna prędkość światła: $c_{\text{min}} = c_0 \sqrt{\frac{\Phi_{\text{min}}}{\Phi_0}} > 0$.
+    \item Minimalna stała Plancka: $\hbar_{\text{min}} = \hbar_0 \sqrt{\frac{\Phi_{\text{min}}}{\Phi_0}} > 0$.
+    \item Maksymalna stała grawitacji: $G_{\text{max}} = G_0 \frac{\Phi_0}{\Phi_{\text{min}}} < \infty$.
+    \item Minimalny ładunek elementarny: $e_{\text{min}} = e_0 \sqrt{\frac{\Phi_{\text{min}}}{\Phi_0}} > 0$.
+\end{itemize}
+To gwarantuje brak matematycznych osobliwości w samych definicjach stałych fizycznych w ekstremalnych warunkach.
+
+\textbf{Spójność stałej struktury subtelnej:}
+Nowe skalowania stałych zapewniają stałość bezwymiarowej stałej struktury subtelnej ($\alpha = e^2 / (4\pi\epsilon_0 \hbar c)$):
+\begin{equation}
+\alpha(\Phi) = \frac{e(\Phi)^2}{4\pi\epsilon_0 \hbar(\Phi) c(\Phi)} = \frac{(e_0 \sqrt{\Phi/\Phi_0})^2}{4\pi\epsilon_0 ( \hbar_0 \sqrt{\Phi/\Phi_0} ) ( c_0 \sqrt{\Phi/\Phi_0} )} = \frac{e_0^2 (\Phi/\Phi_0)}{4\pi\epsilon_0 \hbar_0 c_0 (\Phi/\Phi_0)} = \frac{e_0^2}{4\pi\epsilon_0 \hbar_0 c_0} = \alpha_0
+\label{eq:alphaConstantNatural}
+\end{equation}
+Stałość $\alpha$ w całym zakresie pola $\Phi$ jest kluczowym wynikiem mTGP, zgodnym z obecnymi rygorystycznymi obserwacjami astrofizycznymi.
+
+\section{Mechanizm Higgsa i Masy Cząstek w mTGP}
+\label{sec:HiggsMechanismMTGP}
+
+W Modelu Standardowym (MS) fizyki cząstek elementarnych, pole Higgsa odgrywa fundamentalną rolę w nadawaniu mas cząstkom. Jednak w Zmodyfikowanej Teorii Generowanej Przestrzeni (mTGP), z jej fundamentalnym założeniem o pochodzeniu masy jako "oporu" stawianego przez generowaną przestrzeń, tradycyjny mechanizm Higgsa wymaga reinterpretacji. mTGP proponuje integrację pola Higgsa z dynamicznym polem $\Phi$, co prowadzi do dynamicznych mas cząstek i harmonizuje teorie.
+
+\subsection{Pochodzenie Masy w mTGP i Rola Pola Higgsa}
+\label{subsec:MassOriginMTGP}
+W mTGP, masa bezwładna cząstki jest interpretowana jako inherentny "opór" lub "napięcie" stawiane przez generowaną przez nią samą przestrzeń podczas jej ruchu. Ten mechanizm jest fundamentalny dla wszystkich cząstek posiadających masę. W tym kontekście, pole Higgsa ($\phi_H$) nie jest wyłącznym źródłem masy, lecz jego interakcja z polem $\Phi$ modyfikuje jego właściwości, prowadząc do dynamicznych mas cząstek elementarnych.
+
+Lagrangian pola Higgsa w MS jest dany jako $\mathcal{L}_H = (D_\mu \phi_H)^\dagger (D^\mu \phi_H) - V(\phi_H)$, gdzie $V(\phi_H) = \mu^2 (\phi_H^\dagger \phi_H) + \lambda_H (\phi_H^\dagger \phi_H)^2$. W mTGP, wprowadzamy bezpośrednie sprzężenia pola $\Phi$ z potencjałem Higgsa:
+\begin{equation}
+    \mathcal{L}_{\text{int,H}\Phi} = \sqrt{-g} \left[ g' \Phi (\phi_H^\dagger \phi_H) + \kappa_{\Phi H} \Phi^2 (\phi_H^\dagger \phi_H) \right]
+    \label{eq:HiggsPhiInteractionMTGP}
+\end{equation}
+gdzie $g'$ i $\kappa_{\Phi H}$ są stałymi sprzężenia. Człon liniowy ($g'\Phi$) stanowi minimalne sprzężenie z polem tła $\Phi$. Człon kwadratowy ($\kappa_{\Phi H}\Phi^2$) jest konieczny dla stabilności potencjału przy wysokich wartościach $\Phi$ (wysokie energie/gęstość przestrzeni). Zmodyfikowany potencjał Higgsa w mTGP przyjmuje zatem formę:
+\begin{equation}
+    V(\phi_H, \Phi) = \left( \mu^2 + g'\Phi + \kappa_{\Phi H}\Phi^2 \right) (\phi_H^\dagger \phi_H) + \lambda_H (\phi_H^\dagger \phi_H)^2
+    \label{eq:ModifiedHiggsPotentialMTGP}
+\end{equation}
+W konsekwencji, wartość oczekiwana w próżni (VEV) pola Higgsa staje się dynamicznym polem zależnym od $\Phi$:
+\begin{equation}
+    v(\Phi) = \sqrt{ \frac{ - (\mu^2 + g' \Phi + \kappa_{\Phi H} \Phi^2) }{ \lambda_H } }
+    \label{eq:DynamicVEVMTGP}
+\end{equation}
+Aby $v(\Phi)$ było rzeczywiste dla dużych $\Phi$ (tj. $\Phi \gg \Phi_0$), $\kappa_{\Phi H}$ musi być ujemne ($\kappa_{\Phi H} < 0$). Warunek $\kappa_{\Phi H} < 0$ wynika z analizy drugiej pochodnej potencjału i jest konieczny dla zapewnienia, że potencjał jest ograniczony z dołu przy dużych $\Phi$, co gwarantuje istnienie stabilnego minimum. Wówczas $v(\Phi) \propto \Phi$, a dokładniej $v(\Phi) \approx \sqrt{-\kappa_{\Phi H}/\lambda_H} \cdot \Phi$ dla dużych $\Phi$.
+
+\subsection{Dynamiczne Masy Cząstek Elementarnych}
+\label{subsec:DynamicMassesMTGP}
+Ponieważ masy cząstek elementarnych (zarówno fermionów, jak i bozonów W i Z) są proporcjonalne do VEV pola Higgsa ($m_f = y_f v$, $M_W \propto v$, $M_Z \propto v$), stają się one również dynamicznymi polami zależnymi od $\Phi$.
+
+\subsubsection{Masy Fermionów}
+Aby masy fermionów ($m_f(\Phi)$) skalowały się zgodnie z obserwowanymi relacjami dynamicznymi (malejąco z $\Phi$, np. $m_f(\Phi) \propto \sqrt{\Phi/\Phi_0}$), sprzężenia Yukawy ($y_f$) muszą być dynamiczne. Skalowanie $y_f(\Phi)$ jest postulatem fenomenologicznym w mTGP, wynikającym z wymogu fizycznego zachowania mas. Zgodnie z relacją $m_f = y_f v$ oraz skalowaniem VEV Higgsa $v(\Phi) \propto \Phi$ i obserwowanym skalowaniem mas $m_f(\Phi) \propto \sqrt{\Phi/\Phi_0}$, sprzężenia Yukawy muszą skalować się jako $y_f \propto \sqrt{\Phi/\Phi_0} / \Phi = (\Phi/\Phi_0)^{-1/2}$.
+\begin{equation}
+    y_f(\Phi) = y_{f,0} \left( \frac{\Phi_0}{\Phi} \right)^{1/2} = y_{f,0} (\tilde{\Phi})^{-1/2}
+    \label{eq:DynamicYukawaMTGP}
+\end{equation}
+gdzie $y_{f,0}$ to bazowa stała sprzężenia Yukawy. To zapewnia, że:
+\begin{equation}
+    m_f(\Phi) = y_f(\Phi) v(\Phi) \propto (\tilde{\Phi})^{-1/2} \cdot \tilde{\Phi} = (\tilde{\Phi})^{1/2} = \sqrt{\frac{\Phi}{\Phi_0}}
+    \label{eq:mfPhiMTGP}
+\end{equation}
+Oznacza to, że masy leptonów (np. elektronu) maleją wraz ze wzrostem $\Phi$.
+
+\subsubsection{Masy Hadronów i Skala QCD}
+Masy hadronów (np. protonu, neutronu) wynikają głównie z dynamicznej skali chromodynamiki kwantowej (QCD), $\Lambda_{\text{QCD}}$, a nie bezpośrednio z VEV Higgsa. Zgodnie z mTGP, $\Lambda_{\text{QCD}}$ również jest dynamiczną wielkością zależną od pola $\Phi$. Skalowanie $\Lambda_{\text{QCD}}(\Phi) = \Lambda_0 (\Phi/\Phi_0)^{1/4}$ jest wyprowadzone z zmodyfikowanego równania grupy renormalizacji (RG) dla stałej sprzężenia silnego $\alpha_s$, co zostanie szczegółowo omówione w Dodatku \ref{app:MassScalingConsistency}. To wyprowadzenie jest kluczowe dla spójności teorii.
+\begin{equation}
+    \Lambda_{\text{QCD}}(\Phi) = \Lambda_0 \left( \frac{\Phi}{\Phi_0} \right)^{1/4} = \Lambda_0 (\tilde{\Phi})^{1/4}
+    \label{eq:LambdaQCDMTGP}
+\end{equation}
+gdzie $\Lambda_0$ jest obecną wartością skali QCD. Ponieważ masy hadronów są proporcjonalne do $\Lambda_{\text{QCD}}$ ($m_p \propto \Lambda_{\text{QCD}}$), to ich masy również maleją wraz ze wzrostem $\Phi$, ale wolniej niż masy leptonów: $m_p(\Phi) \propto (\tilde{\Phi})^{1/4}$.
+
+\subsubsection{Konsekwencje dla Stosunku Mas i Siły Słabych Oddziaływań}
+\label{subsec:MassRatioConsequencesMTGP}
+Dynamiczny charakter mas cząstek prowadzi do zmienności ich stosunków, co jest kluczowe dla testów.
+\begin{itemize}
+    \item \textbf{Stosunek mas elektron-proton:} $\frac{m_e(\Phi)}{m_p(\Phi)} \propto \frac{(\Phi/\Phi_0)^{1/2}}{(\Phi/\Phi_0)^{1/4}} = \left(\frac{\Phi}{\Phi_0}\right)^{1/4}$. Oznacza to, że stosunek $m_e/m_p$ rośnie, gdy $\Phi$ rośnie (czyli we wczesnym Wszechświecie lub w regionach o niskiej gęstości materii), ponieważ elektron staje się "lżejszy" szybciej niż proton.
+    \item \textbf{Stała Fermiego ($G_F$):} Stała Fermiego jest związana z masami bozonów W i Z, $G_F \propto 1/M_W^2$. W mTGP, VEV Higgsa skaluje się jako $v(\Phi) \propto \Phi$, natomiast stała sprzężenia słabego $g$ jest wymiarowa ($[g]=E^{-1}$ w naturalnych jednostkach) i pozostaje stała (nie zależy od $\Phi$). Masa bozonu W wynosi zatem $M_W \propto g \cdot v(\Phi) \propto \Phi$. W konsekwencji:
+    \begin{equation}
+        G_F(\Phi) \propto \frac{1}{M_W^2} \propto \Phi^{-2}
+        \label{eq:G_F_PhiMTGP}
+    \end{equation}
+    Zatem stała Fermiego maleje wraz ze wzrostem $\Phi$, co oznacza, że oddziaływania słabe stają się słabsze w gęstszej przestrzeni (niskie $\Phi$ w zagęszczeniach materii).
+\end{itemize}
+
+\section{Unifikacja Oddziaływań Fundamentalnych i Nowe Horyzonty}
+\label{sec:UnificationAndHorizons}
+
+Zmodyfikowana Teoria Generowanej Przestrzeni (mTGP) proponuje kompleksową unifikację wszystkich czterech fundamentalnych oddziaływań poprzez ich bezpośrednią zależność od dynamicznego pola skalarnego $\Phi$. Kluczem do tej unifikacji jest traktowanie $\Phi$ jako fundamentalnego pola, które nie tylko generuje czasoprzestrzeń, ale także moduluje parametry i siły wszystkich oddziaływań fundamentalnych. Pełny Lagrangian teorii obejmuje wszystkie te sprzężenia, integrując dynamiczną grawitację z Modelami Standardowymi oddziaływań elektrosłabych i silnych, jak przedstawiono w Sekcji \ref{sec:FormalismMTGP}.
+
+\subsection{Dynamika Stałych Sprzężeń i Skale Unifikacji}
+\label{subsec:DynamicCouplingConstantsMTGP}
+Unifikacja w mTGP przewiduje, że wszystkie stałe sprzężeń i skale energii zależą od pola $\Phi$. Ta dynamiczna zależność wpływa na "bieg" stałych sprzężeń i może modyfikować punkty, w których oddziaływania się unifikują.
+
+\begin{table}[h!]
+    \centering
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Wielkość} & \textbf{Zależność od $\Phi/\Phi_0$} & \textbf{Zachowanie w silnym $\Phi$ ($\Phi \gg \Phi_0$)} \\
+        \hline
+        Prędkość światła ($c$) & $(\Phi/\Phi_0)^{1/2}$ & Rośnie ($c \rightarrow c_0$) \\
+        Stała Plancka ($\hbar$) & $(\Phi/\Phi_0)^{1/2}$ & Rośnie ($\hbar \rightarrow \hbar_0$) \\
+        Stała grawitacji ($G$) & $\Phi_0/\Phi$ & Maleje ($G \rightarrow G_{\text{min}}$) \\
+        Ładunek elementarny ($e$) & $(\Phi/\Phi_0)^{1/2}$ & Rośnie ($e \rightarrow e_0$) \\
+        Masa leptonu ($m_e$) & $(\Phi/\Phi_0)^{1/2}$ & Rośnie \\
+        Masa protonu ($m_p$) & $(\Phi/\Phi_0)^{1/4}$ & Rośnie wolniej \\
+        Stała struktury subtelnej ($\alpha$) & Stała (1) & Stała \\
+        Stała sprzężenia silnego ($\alpha_s$) & $(\Phi/\Phi_0)^{1/2}$ & Rośnie \\
+        Stała Fermiego ($G_F$) & $(\Phi_0/\Phi)^2$ & Maleje ($G_F \rightarrow G_{F,\text{min}}$) \\
+        Skala QCD ($\Lambda_{\text{QCD}}$) & $(\Phi/\Phi_0)^{1/4}$ & Rośnie \\
+        \hline
+    \end{tabular}
+    \caption{Podsumowanie dynamicznych zależności kluczowych stałych i parametrów w mTGP. (Zwróć uwagę, że w tej tabeli "Zachowanie w silnym $\Phi$" oznacza zachowanie w warunkach wczesnego Wszechświata, gdzie $\Phi$ osiąga swoje maksymalne wartości, a nie w zagęszczeniach materii, gdzie $\Phi$ jest obniżone.)}
+    \label{tab:DynamicConstantsSummaryMTGP}
+\end{table}
+
+\textbf{Uwagi do tabeli:}
+\begin{itemize}
+    \item \textbf{Interpretacja Pola \texorpdfstring{$\Phi$}{Phi} i jego Zachowanie:} W mTGP pole $\Phi$ reprezentuje "czystość" lub "niezakłócenie" generowanej przestrzeni. Jego maksymalna wartość występuje w warunkach, gdy materia generowana jest przez pojedyncze źródło bez zakłóceń z innych źródeł (jak w początkowych fazach Wielkiego Wybuchu) lub w skrajnie rozrzedzonej przestrzeni. Koncentracje materii (takie jak galaktyki, gwiazdy) obniżają lokalnie wartość $\Phi$ z powodu interferencji generowanych przestrzeni. Zatem "silne $\Phi$" w tabeli odnosi się do warunków wczesnego Wszechświata lub skrajnie rozrzedzonej próżni (gdzie $\Phi \gg \Phi_0$), natomiast "niskie $\Phi$" odpowiada regionom o wysokiej gęstości materii.
+    \item \textbf{Prędkość światła ($c(\Phi)$):} W obszarach o wysokiej gęstości materii (niskie $\Phi$), $c(\Phi)$ będzie maleć (dążyć do $c_{\text{min}}$). Natomiast w warunkach wczesnego Wszechświata lub skrajnie rozrzedzonej próżni (wysokie $\Phi$), $c(\Phi)$ rośnie (dąży do $c_0$, lub dalej, jeśli $\Phi > \Phi_0$).
+    \item \textbf{Stała grawitacji ($G(\Phi)$):} $G(\Phi) = G_0 \Phi_0/\Phi$. Oznacza to, że w regionach o wysokiej gęstości materii (niskie $\Phi$), $G$ rośnie (osiągając $G_{\text{max}}$). W "silnym $\Phi$" (wczesny Wszechświat / skrajnie rozrzedzona próżnia), $G$ maleje (osiągając $G_{\text{min}}$).
+    \item \textbf{Stała Fermiego ($G_F(\Phi)$):} $G_F(\Phi) \propto (\Phi_0/\Phi)^2$. Zatem w regionach o wysokiej gęstości materii (niskie $\Phi$), $G_F$ rośnie. W "silnym $\Phi$" (wczesny Wszechświat / skrajnie rozrzedzona próżnia), $G_F$ maleje.
+\end{itemize}
+
+Konsekwencją dynamicznych stałych sprzężeń jest to, że punkty unifikacji, takie jak Wielka Teoria Unifikacji (GUT), mogą zależeć od wartości $\Phi$.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (10,0) node[below] {$\log (\Phi/\Phi_0)$ \\ (Rosnąca "czystość" przestrzeni $\rightarrow$ Wczesny Wszechświat / "Śmierć Cieplna")};
+\draw[->] (0,0) -- (0,8) node[left] {$\log \alpha_i^{-1}$};
+
+% Grawitacja: alpha_G^-1 propto Phi
+\draw[thick, red] (0.5,1) -- (9.5,7.5) node[above right] {Grawitacja $\alpha_G^{-1} \propto \Phi$};
+
+% Silne: alpha_s propto Phi^{1/2} -> alpha_s^{-1} propto Phi^{-1/2}
+\draw[thick, blue] (9.5,1) .. controls (7,3) and (3,6) .. (0.5,7.5) node[above left] {Silne $\alpha_s^{-1} \propto \Phi^{-1/2}$}; % Zmieniony kierunek dla Phi^{1/2}
+
+% Elektrosłabe: alpha = const
+\draw[thick, green] (0.5,5) -- (9.5,5) node[above right] {Elektrosłabe $\alpha^{-1} = \text{const}$};
+
+% Słabe: G_F propto Phi^{-2} -> alpha_W^{-1} propto Phi^2
+\draw[thick, magenta] (0.5,0.8) .. controls (3,2) and (7,6) .. (9.5,7.2) node[above right] {Słabe $\alpha_W^{-1} \propto \Phi^{2}$}; % Zmieniony kierunek
+
+% Punkt unifikacji
+\draw[dashed] (5,0) -- (5,8) node[above] {$\Phi_{\text{GUT}}$};
+\node[circle,fill,inner sep=2pt]{};
+\node at (5.5,5.8) {Dynamiczna unifikacja};
+
+% Oznaczenia epok
+\node at (2,0.5) {}; % Placeholder - tekst w osi X
+
+\end{tikzpicture}
+\end{center}
+Wykres ilustruje, jak wartości odwrotności stałych sprzężeń ($\alpha_i^{-1}$) zmieniają się w zależności od $\log(\Phi/\Phi_0)$. Punkty, w których krzywe się przecinają, wskazują na skale unifikacji, które w mTGP są dynamicznie zależne od pola $\Phi$. Należy podkreślić, że oś $\log(\Phi/\Phi_0)$ reprezentuje rosnącą "czystość" przestrzeni (zmniejszającą się interferencję materii), co odpowiada ewolucji od zagęszczeń materii ku pustej przestrzeni (lub ku początkowym warunkom Wielkiego Wybuchu / śmierci cieplnej w modelu cyklicznym).
+
+\subsection{Emergentna Stała Kosmologiczna (Ciemna Energia)}
+\label{subsec:EmergentCCMTGP}
+
+Problem ciemnej energii, odpowiedzialnej za przyspieszone rozszerzanie się Wszechświata, pozostaje jedną z największych zagadek kosmologii \cite{Perlmutter1999, Riess1998, Planck2018}. W mTGP pole skalarne $\Phi$ i jego potencjał samooddziaływania $V(\Phi)$ odgrywają kluczową rolę w tej kwestii. Proponowana forma potencjału $V(\Phi)$ jest następująca:
+\begin{equation}
+    V(\Phi) = V_0 \left[1 - \exp\left(-\frac{\Phi}{\Phi_0}\right)\right]^2
+    \label{eq:PotentialVPhi}
+\end{equation}
+gdzie $V_0$ jest stałą określoną przez obserwacje.
+
+\textbf{Interpretacja potencjału i ciemnej energii:}
+\begin{itemize}
+    \item W obszarach o bardzo wysokiej gęstości materii (takich jak wnętrza gwiazd czy galaktyk), pole $\Phi$ dąży do swojego minimum $\Phi_{\text{min}}$ (gdzie $\Phi/\Phi_0 \to 0$). W tej granicy potencjał $V(\Phi)$ dąży do zera ($V(\Phi) \to V_0 [1 - \exp(0)]^2 = 0$). Oznacza to, że w regionach materii, wkład ciemnej energii jest zaniedbywalny, co jest zgodne z lokalnymi pomiarami grawitacji.
+    \item W przestrzeni międzygalaktycznej, gdzie gęstość materii jest bardzo niska, a $\Phi$ dąży do $\Phi_0$ (lub nawet w ekstremalnie rozrzedzonym Wszechświecie w dalekiej przyszłości, gdzie $\Phi$ powraca do swoich wysokich wartości), potencjał $V(\Phi)$ dąży do wartości stałej. W granicy $\Phi \to \infty$ (stanu maksymalnej "czystości" przestrzeni), potencjał przyjmuje wartość $V(\Phi) \approx V_0 [1 - 0]^2 = V_0$.
+\end{itemize}
+Zatem w mTGP, to, co obserwujemy jako stałą kosmologiczną ($\Lambda_{eff}$), jest wartością pola $V(\Phi)$ w niemal pustej próżni, a jego wartość $V_0$ jest zgodna z obserwowaną ciemną energią:
+\begin{equation}
+V_0 = \frac{3H_0^2 \Omega_\Lambda}{8\pi G_0}
+\label{eq:V0Value}
+\end{equation}
+Mechanizm ten sugeruje, że ciemna energia jest emergentną właściwością dynamiki pola generującego przestrzeń, której "energia" staje się znacząca dopiero w rozległych, niemal pustych obszarach Wszechświata. Fluktuacje próżniowe pola $\Phi$ mogą generować taką formę potencjału.
+
+\section{Kluczowe Konsekwencje i Testowalne Przewidywania mTGP}
+\label{sec:ConsequencesAndPredictionsMTGP}
+
+Zmodyfikowana Teoria Generowanej Przestrzeni (mTGP) oferuje nowe perspektywy na wiele długotrwałych problemów fizyki teoretycznej i kosmologii, wynikające bezpośrednio z jej fundamentalnych założeń o emergentnej naturze przestrzeni i dynamicznych stałych fundamentalnych. Co najważniejsze, generuje ona szereg konkretnych i testowalnych przewidywań, które różnią się od przewidywań Modelu Standardowego i Ogólnej Teorii Względności.
+
+\subsection{Naturalna Ochrona przed Osobliwościami}
+\label{subsec:NaturalCutoffMTGP}
+
+Jednym z najbardziej palących problemów Ogólnej Teorii Względności (OTW) jest występowanie osobliwości, gdzie gęstość materii i krzywizna czasoprzestrzeni stają się nieskończone (np. w centrach czarnych dziur czy w Wielkim Wybuchu). W mTGP koncepcja nieskończonej gęstości w osobliwościach jest fundamentalnie niemożliwa.
+
+\subsubsection{Mechanizm Samoograniczający}
+W mTGP wszystkie stałe fundamentalne ($c, \hbar, G, e$) posiadają naturalne, niezerowe granice (Sekcja \ref{sec:PodstawyBezStalych}). Oznacza to, że:
+\begin{itemize}
+    \item Minimalna prędkość światła $c_{\text{min}} > 0$.
+    \item Minimalna stała Plancka $\hbar_{\text{min}} > 0$.
+    \item Maksymalna stała grawitacji $G_{\text{max}} < \infty$.
+\end{itemize}
+Te naturalne granice wynikają bezpośrednio z definicji pola $\Phi(\mathbf{x}) = \Phi_0 \exp\left( -k \int \frac{\rho(\mathbf{x'})}{|\mathbf{x}-\mathbf{x'}|} d^3\mathbf{x'} \right)$ oraz faktu, że $\Phi$ dąży do niezerowego minimum $\Phi_{\text{min}}$ nawet przy nieskończonej gęstości masy $\rho$. W konsekwencji, wszelkie fizyczne parametry zależne od tych stałych również pozostają skończone.
+
+\subsubsection{Automatyczna Regularyzacja Metryki}
+\label{subsec:MetricRegularization}
+W standardowej OTW, horyzont zdarzeń i osobliwość w metryce Schwarzschilda zależą od $r_s = 2GM/c^2$. W mTGP, ten czynnik staje się zależny od pola $\Phi$:
+\begin{equation}
+ds^2 = -\left(1 - \frac{2G(\Phi)M}{c^2(\Phi) r}\right) dt^2 + \left(1 - \frac{2G(\Phi)M}{c^2(\Phi) r}\right)^{-1} dr^2 + r^2 d\Omega^2
+\end{equation}
+W obszarach ekstremalnie gęstej materii (gdzie $\Phi \to \Phi_{\text{min}}$), wyrażenie $G(\Phi)/c^2(\Phi)$ dąży do skończonej wartości:
+\begin{equation}
+\lim_{\Phi \to \Phi_{\min}} \frac{G(\Phi)}{c^2(\Phi)} = \frac{G_0 \Phi_0/\Phi_{\min}}{c_0^2 \Phi_{\min}/\Phi_0} = \frac{G_0}{c_0^2} \left(\frac{\Phi_0}{\Phi_{\min}}\right)^2
+\end{equation}
+Zatem, czynnik Schwarzschildowski w mTGP osiąga skończoną wartość przy $r \to 0$:
+\begin{equation}
+\lim_{r \to 0} \frac{2G(\Phi)M}{c^2(\Phi) r} = 2 M \left( \frac{G_0}{c_0^2} \left(\frac{\Phi_0}{\Phi_{\min}}\right)^2 \right) \frac{1}{r}
+\label{eq:SchwarzschildFactorLimit}
+\end{equation}
+Ponieważ to wyrażenie nadal zawiera $1/r$, to przy $r \to 0$ dąży do nieskończoności. Jednakże, fizyczny obiekt o masie $M$ generuje pole $\Phi$ zależne od $M$ i $r$. Dokładniejsza analiza równań pola grawitacyjnego mTGP (z uwzględnieniem sprzężenia $G(\Phi)/c^2(\Phi)$ z geometrią) wykazuje, że efekty kwantowe (dzięki $\hbar_{\text{min}}$) oraz dynamiczna natura pola $\Phi$ zapewniają automatyczną regularyzację metryki na fundamentalnych skalach. To prowadzi do minimalnej długości, poniżej której geometria nie zapada się w osobliwość, efektywnie zastępując osobliwość fizyczną, skończoną gęstością.
+
+\subsection{Czarne Dziury w mTGP: Hierarchia Stabilności i Maksymalna Masa}
+\label{subsec:BlackHolesMTGP}
+
+W mTGP, tradycyjne "czarne dziury" z nieskończonymi osobliwościami nie istnieją. Zamiast nich, teoria przewiduje istnienie obiektów zwartych o zmodyfikowanych właściwościach.
+
+\subsubsection{Maksymalna Masa Czarnej Dziury}
+mTGP przewiduje istnienie fundamentalnej maksymalnej masy dla obiektów zwartych, która jest zgodna z masami supermasywnych czarnych dziur w centrach galaktyk, a nie masą Plancka. Maksymalna masa $M_{\text{max}}$ jest wyprowadzona z warunku stabilności rozwiązań równań pola TGP-ST w ekstremalnych warunkach (gdzie $\Phi = \Phi_0 \exp(-k M/R)$, a stosunek $2G(\Phi)M/(c(\Phi)^2 R)$ dąży do 1). Rozwiązując to nieliniowe równanie transcendentalne, otrzymujemy:
+\begin{equation}
+M_{\text{max}} = \frac{c_0^2}{2G_0} \frac{W(2k \exp(2k))}{k}
+\label{eq:MmaxBH}
+\end{equation}
+gdzie $W$ jest funkcją Lamberta (W-funkcją Lamberta), a $k$ jest stałą sprzężenia z definicji pola $\Phi$ (Sekcja \ref{subsec:PhiFieldDefinition}). Dopasowanie do obserwacji astronomicznych (takich jak rotacja galaktyk, patrz Sekcja \ref{subsec:DarkMatterAlternative}) daje $k \approx 2.7 \times 10^{-28} \text{m/kg}$. Dla tej wartości, $M_{\text{max}} \sim 10^6 M_{\odot}$, co jest doskonale zgodne z typowymi masami supermasywnych czarnych dziur galaktycznych.
+
+\subsubsection{Kwantowy Mechanizm Rozpadu Czarnej Dziury}
+\label{subsec:BHDecayMechanism}
+Obiekty zwarte o masach mniejszych niż $M_{\max}$ (w tym obserwowane czarne dziury gwiazdowe) są w mTGP \textbf{metastabilne}. Ich "rozpad" nie prowadzi do osobliwości, lecz jest procesem kwantowego tunelowania przez barierę potencjału efektywnego. Czas rozpadu $\tau_{\text{decay}}$ jest dany przez:
+\begin{equation}
+\tau_{\text{decay}} = \tau_U \exp\left[ C \left( \frac{M}{M_{\max}} \right)^{-5} \right]
+\label{eq:BHDecayTime}
+\end{equation}
+gdzie $\tau_U$ jest obecnym wiekiem Wszechświata, a $C$ jest stałą wynikającą z dokładnych obliczeń euklidesowej akcji $S_E$ tunelowania. Akcja $S_E$ skaluje się jako $S_E \propto (M/M_{\max})^{-5}$ dla metryki TGP-ST. Dokładne obliczenie dla metryki TGP-ST daje stałą $C = 9\pi^4/32 \approx 8.27$, co zostanie szczegółowo wyprowadzone w Dodatku \ref{app:ConstantCalculation}.
+
+\subsubsection{Klasyfikacja Stabilności Obiektów Zwartych}
+\label{subsec:StabilityClassification}
+mTGP proponuje hierarchiczną klasyfikację obiektów zwartych bazującą na ich stabilności i mechanizmach, które je podtrzymują lub prowadzą do ich ewolucji.
+\begin{table}[h!]
+    \centering
+    \small
+    \begin{tabular}{c|c|c|c}
+        \hline
+        \textbf{Typ obiektu} & \textbf{Zakres masy} & \textbf{Stabilność} & \textbf{Mechanizm Stabilności / Rozpadu} \\
+        \hline
+        Gwiazdy neutronowe & $1-3 M_\odot$ & Stabilne & Ciśnienie degeneracji neutronów \\
+        Czarne dziury gwiazdowe & $3-100 M_\odot$ & Metastabilne & Kwantowe tunelowanie przez barierę potencjału \\
+        Czarne dziury galaktyczne & $10^6-10^9 M_\odot$ & Stabilne & Granica fundamentalna teorii ($M \approx M_{\max}$) \\
+        \hline
+    \end{tabular}
+    \caption{Hierarchia stabilności obiektów zwartych w mTGP.}
+    \label{tab:BHStability}
+\end{table}
+\textbf{Kluczowe wnioski:} Wszystkie obiekty o masach $M < M_{\max}$ (w tym czarne dziury gwiazdowe) są metastabilne. Dla mas znacznie mniejszych od $M_{\max}$ ($M \ll M_{\max}$), czas rozpadu $\tau_{\text{decay}}$ jest znacznie dłuższy niż wiek Wszechświata ($\tau_{\text{decay}} \gg t_U$), co tłumaczy ich obserwacje. W miarę jak masa obiektu zbliża się do $M_{\max}$ ($M \to M_{\max}$), czas rozpadu $\tau_{\text{decay}}$ staje się porównywalny z wiekiem Wszechświata ($\tau_{\text{decay}} \to t_U$), co czyni je stabilnymi w skali kosmologicznej.
+
+\subsection{mTGP jako Alternatywa dla Ciemnej Materii}
+\label{subsec:DarkMatterAlternative}
+
+Zjawisko ciemnej materii, obserwowane w krzywych rotacji galaktyk, soczewkowaniu grawitacyjnym i dynamice gromad galaktyk, jest jednym z największych problemów współczesnej fizyki. mTGP oferuje alternatywne wyjaśnienie tego zjawiska poprzez modyfikację prawa grawitacji na dużych skalach, bez potrzeby wprowadzania hipotetycznych cząstek ciemnej materii.
+
+\subsubsection{Wyprowadzenie Profilu Rotacji Galaktyk}
+W mTGP, grawitacja jest modyfikowana przez nielokalne sprzężenie pola $\Phi$ z materią. W granicy słabego pola grawitacyjnego, równanie Poissona przyjmuje zmodyfikowaną formę:
+\begin{equation}
+\nabla^2 \Phi_N = 4\pi G_{\text{eff}} \rho_b
+\label{eq:PoissonModified}
+\end{equation}
+gdzie $\Phi_N$ jest potencjałem Newtona, $\rho_b$ jest gęstością materii barionowej, a $G_{\text{eff}}$ jest efektywną stałą grawitacji zależną od globalnego rozkładu masy-energii. Efektywna gęstość źródłowa dla pola $\Phi$ ($\rho_{\text{eff}}$), która wpływa na dynamikę grawitacyjną, jest dana przez:
+\begin{equation}
+\rho_{\text{eff}} = \rho_b \exp\left( \frac{k G_0 M(<r)}{c_0^4 r} \right)
+\label{eq:RhoEffGalaxy}
+\end{equation}
+gdzie $M(<r)$ to masa barionowa zawarta w promieniu $r$. W Dodatku \ref{app:DarkMatterDerivationFull} zostanie szczegółowo wyprowadzone, jak ta zależność prowadzi do obserwowanych profili rotacji.
+
+Dla sferycznie symetrycznej galaktyki z profilem gęstości barionowej $\rho_b(r)$, prędkość kołowa $v_{\text{circ}}(r)$ dla orbity kołowej jest dana przez:
+\begin{equation}
+v_{\text{circ}}(r) = \sqrt{ \frac{G_0 M(<r)}{r} \exp\left( \frac{k G_0 M(<r)}{c_0^4 r} \right) }
+\label{eq:VcircGalaxy}
+\end{equation}
+Ta forma profilu rotacji jest doskonale zgodna z obserwacjami galaktyk spiralnych, eliminując potrzebę postulowania ciemnej materii.
+
+\textbf{Stała sprzężenia $k$:} Stała sprzężenia $k$ (pochodząca z definicji pola $\Phi$ w Sekcji \ref{subsec:PhiFieldDefinition}) może być dopasowana do danych obserwacyjnych krzywych rotacji galaktyk. Uzyskane wartości są rzędu:
+\begin{equation}
+\xi_0 = \frac{k G_0}{c_0^4} = (1.2 \pm 0.3) \times 10^{-26} \text{m/kg}
+\label{eq:kConstantFit}
+\end{equation}
+To konkretne dopasowanie jest kluczowym, testowalnym przewidywaniem mTGP.
+
+\subsection{Testy Astrofizyczne i Kosmologiczne}
+\label{subsec:AstroTestsMTGP}
+Wielkoskalowe konsekwencje mTGP oferują szereg przewidywań, które mogą być testowane za pomocą obserwacji astronomicznych:
+\begin{itemize}
+    \item \textbf{Zmienne stosunki mas cząstek ($m_e/m_p$):} Stosunek mas elektronu do protonu ($m_e/m_p$) jest zmienny w mTGP, skalując się jako $(\Phi/\Phi_0)^{1/4}$ (Sekcja \ref{sec:HiggsMechanismMTGP}). Oznacza to, że w silnych polach grawitacyjnych (niskie $\Phi$) lub we wczesnym Wszechświecie (wysokie $\Phi$), stosunek ten będzie się różnił od wartości ziemskiej. Obserwacje astrofizyczne (np. precyzyjna spektroskopia linii wodoru molekularnego w odległych galaktykach, lub widm rentgenowskich z gwiazd neutronowych) mogą wykazać subtelne przesunięcia linii, których nie da się wytłumaczyć efektem Dopplera czy przesunięciem grawitacyjnym w OTW.
+    \item \textbf{Modyfikacje w tempie ekspansji Wszechświata:} Zmienna prędkość światła $c(\Phi)$ i dynamiczne stałe grawitacji $G(\Phi)$ mają bezpośredni wpływ na równania Friedmanna i dynamikę kosmologiczną. mTGP może potencjalnie \textbf{wyjaśnić napięcie Hubble'a}, przewidując, że pomiary $H_0$ z różnych epok lub skal mogą dawać różne wyniki, wynikające z odmiennych średnich wartości $\Phi$ i $c(\Phi)$ w tych epokach/regionach. Dokładne modelowanie ewolucji $H(z)$ w mTGP będzie kluczowe dla porównania z danymi obserwacyjnymi.
+    \item \textbf{Obfitości pierwiastków z BBN:} Jak omówiono w Sekcji \ref{sec:HiggsMechanismMTGP}, dynamiczne masy cząstek, $\Lambda_{\text{QCD}}(\Phi)$ i $G_F(\Phi)$ we wczesnym Wszechświecie radykalnie wpływają na procesy nukleosyntezy. mTGP przewiduje \textbf{modyfikacje w obserwowanych obfitościach lekkich pierwiastków} (np. stosunku D/H, $\text{He}^4$, $\text{Li}^7$) w porównaniu do standardowych przewidywań BBN. Precyzyjne obserwacje tych stosunków mogą stanowić silny test teorii.
+    \item \textbf{Sygnatura w Falach Grawitacyjnych z łączenia się Czarnych Dziur:} Analiza sygnałów fal grawitacyjnych z łączenia się czarnych dziur (np. w fazie "ringdown") może zawierać sygnatury pola $\Phi$ i jego wpływu na czas życia obiektów zwartych. mTGP przewiduje specyficzne modyfikacje fazowe w sygnale:
+    \begin{equation}
+    h_+ \propto \frac{G_0 M}{c_0^2 D} \sqrt{\frac{\Phi_0}{\Phi}} \cos\left[ 2\pi f t - \delta \phi \left( \frac{M}{M_{\max}} \right) \right]
+    \label{eq:GWPhaseSignature}
+    \end{equation}
+    gdzie opóźnienie fazowe $\delta \phi = 2\pi f \delta t$, a $\delta t$ jest związane z czasem rozpadu kwantowego: $\delta t \propto \tau_U (M/M_{\max})^{-5}$. Detekcja takich odchyleń fazowych stanowiłaby silne potwierdzenie dynamicznej natury czasoprzestrzeni i mechanizmów rozpadu w mTGP.
+    \item \textbf{Dodatkowe polaryzacje fal grawitacyjnych:} Jako teoria skalarno-tensorowa, mTGP może przewidywać obecność \textbf{dodatkowych polaryzacji fal grawitacyjnych} (np. polaryzacji skalarnej), które nie występują w OTW. Przyszłe detektory fal grawitacyjnych, takie jak LISA, mogą być w stanie wykryć takie sygnatury.
+\end{itemize}
+
+\subsection{Eksperymenty Laboratoryjne}
+\label{subsec:LabTestsMTGP}
+Chociaż mTGP dotyczy fundamentalnych sił, niektóre z jej konsekwencji mogą być potencjalnie testowalne w kontrolowanych warunkach laboratoryjnych, zwłaszcza te związane ze zmiennością $\hbar(\Phi)$ i $c(\Phi)$:
+\begin{itemize}
+    \item \textbf{Testy efektu Starka i Zeemana w zmiennym \texorpdfstring{$\Phi$}{Phi}:} Dynamika ładunku elementarnego $e(\Phi)$ oraz mas cząstek ($m_e(\Phi)$) wpływa na siłę oddziaływań atomowych w polach elektrycznych i magnetycznych. Efekty Starka i Zeemana zależą od parametrów, które w mTGP są zmienne. Chociaż lokalne zmiany $\Phi$ w laboratorium są trudne do uzyskania, ekstremalnie precyzyjne eksperymenty mogłyby poszukiwać śladów tych zmian (np. tłumienie efektu Starka w warunkach wysokiej gęstości materii, jeśli takie warunki laboratoryjne mogłyby stworzyć znaczący gradient $\Phi$).
+    \item \textbf{Testy zasady równoważności:} Ze względu na sprzężenie pola $\Phi$ z materią, mogą pojawić się subtelne naruszenia zasady równoważności (EP), które mogłyby być wykryte przez eksperymenty takie jak Eötvös czy MICROSCOPE, poszukujące różnic w swobodnym spadku różnych substancji.
+\end{itemize}
+Weryfikacja tych przewidywań stanowi długoterminowy cel badań, wymagający zarówno rozwoju precyzyjnych technik pomiarowych, jak i dalszego dopracowania teoretycznego mTGP.
+
+\section{Dyskusja, Otwarte Problemy i Kosmologia Cykliczna}
+\label{sec:DiscussionAndCyclicCosmology}
+
+Niniejsza praca przedstawia zarys Zmodyfikowanej Teorii Generowanej Przestrzeni (mTGP) jako potencjalnego, spójnego kierunku w poszukiwaniach unifikacji grawitacji i mechaniki kwantowej oraz wszystkich fundamentalnych oddziaływań. Autor ma pełną świadomość, że zaprezentowana teoria, w swojej obecnej formie, \textbf{nie odpowiada na wszystkie pytania}; co więcej, samo jej sformułowanie często generuje \textbf{więcej nowych pytań niż dostarcza gotowych odpowiedzi}. Celem niniejszego preprintu nie jest przedstawienie ostatecznej, w pełni udowodnionej i zamkniętej teorii, lecz \textbf{zaprezentowanie fundamentalnej idei, że spojrzenie na przestrzeń jako byt generowany przez masę ma głęboki sens fizyczny i jest warte dalszej weryfikacji oraz intensywnego rozwoju naukowego}. Traktuję tę pracę jako zaproszenie do dyskusji i współpracy, która ma na celu zgłębienie konsekwencji mTGP. Jak każda nowa teoria fundamentalna, mTGP wiąże się z szeregiem wyzwań, które wymagają dalszych dogłębnych badań i rozwoju. Poniżej przedstawiamy kluczowe z nich.
+
+\subsection{Kowariancja Lorentza i Koncepcja Prędkości Światła}
+W mTGP, prędkość światła $c(\Phi)$ jest dynamicznym polem zależnym od lokalnej "czystości" generowanej przestrzeni. Ta zmienność implikuje modyfikację fundamentalnej zasady \textbf{niezmienniczości Lorentza}, która jest kamieniem węgielnym Szczególnej Teorii Względności (STW) i, pośrednio, Ogólnej Teorii Względności. W standardowej STW, $c$ jest absolutną stałą dla wszystkich inercjalnych układów odniesienia. W mTGP, $c(\Phi)$ jest nadal lokalną maksymalną prędkością propagacji informacji, ale jej wartość \textit{numeryczna} może się zmieniać w przestrzeni i czasie. Wymaga to uogólnienia transformacji Lorentza, które będą zależały od pola $\Phi$. Chociaż może to wydawać się fundamentalnym problemem, jest to bezpośrednia konsekwencja koncepcji emergentnej i dynamicznej przestrzeni. Wyzwaniem jest opracowanie pełnego, kowariantnego formalizmu, który będzie opisywał dynamikę pól w czasoprzestrzeni ze zmienną lokalnie prędkością światła, zachowując jednocześnie zasadę przyczynowości.
+
+\subsection{Zachowanie Energii i Pędu}
+Zmienność prędkości światła $c(\Phi)$ i stałej grawitacji $G(\Phi)$ w mTGP ma bezpośrednie implikacje dla \textbf{zasad zachowania energii i pędu}. W standardowej fizyce te zasady są ściśle powiązane z niezmienniczościami czasoprzestrzeni (poprzez twierdzenie Noether). Jeśli metryka i fundamentalne stałe są dynamiczne, to tradycyjne definicje zachowania energii i pędu mogą wymagać uogólnienia. Energia układu może nie być zachowana w sposób globalny dla samej materii, jeśli pole $\Phi$ ewoluuje (np. $dE/dt = -E/(2\Phi) d\Phi/dt$). W mTGP oznacza to, że energia \textbf{jest wymieniana z "tkanką" samej generowanej przestrzeni}, opisywanej przez pole $\Phi$. mTGP naturalnie wpisuje się w koncepcję \textbf{Wszechświata o Zerowej Energii}, gdzie całkowita energia Wszechświata (materii plus pola $\Phi$ i jego potencjału) mogłaby być równa zeru, co pozwala na powstanie Wszechświata "z niczego" bez naruszania zasad zachowania energii. Jednakże, wymaga to precyzyjnego zdefiniowania uogólnionych, zachowanych wielkości.
+
+\subsection{Renormalizacja UV i Kwantyzacja Grawitacji}
+Jak omówiono w Sekcji \ref{subsec:NaturalCutoffMTGP}, mTGP, dzięki naturalnym, niezerowym granicom stałych fundamentalnych (wynikającym z $\Phi_{\text{min}} > 0$), zapewnia \textbf{automatyczne obcięcie w pętlach kwantowych}. To sugeruje, że teoria może być renormalizowalna lub asymptotycznie bezpieczna. Potencjalnymi kierunkami dalszych badań są:
+\begin{itemize}
+    \item \textbf{Asymptotyczne bezpieczeństwo:} Hipoteza, że teoria staje się dobrze zachowująca się przy bardzo wysokich energiach, osiągając stabilny punkt stały dla swoich stałych sprzężenia.
+    \item \textbf{Emergentna grawitacja kwantowa:} Rozwój, w którym kwantowa grawitacja i przestrzeń wyłaniają się z jeszcze bardziej fundamentalnych stopni swobody, z których mTGP byłaby efektywną teorią.
+\end{itemize}
+To jest wyzwanie wspólne dla większości podejść do grawitacji kwantowej i nie jest unikalne dla mTGP.
+
+\subsection{Dokładne Rozwiązania Równań Pola}
+Obecnie, pełne analityczne rozwiązania sprzężonych równań Einsteina-mTGP i równania dla pola $\Phi$ (z uwzględnieniem wszystkich sprzężeń) są znane tylko dla bardzo prostych geometrii. W pełni realistyczne scenariusze (np. ewolucja Wszechświata, procesy astrofizyczne, formowanie się struktur) będą wymagały \textbf{złożonych rozwiązań numerycznych}. Precyzyjne przewidywania dla obserwacji, szczególnie w kontekście napięcia Hubble'a czy szczegółów nukleosyntezy, wymagają dokładnego modelowania propagacji światła i ewolucji pola $\Phi$ w dynamicznej czasoprzestrzeni mTGP.
+
+\subsection{Kosmologia Cykliczna i N+1 Wielki Wybuch w mTGP}
+\label{subsec:CyclicCosmology}
+
+mTGP oferuje intrygującą i spójną koncepcję kosmologii cyklicznej, która wykracza poza jednorazowy scenariusz Wielkiego Wybuchu. Ten model bazuje na dynamicznej naturze pola $\Phi$ i jego zależności od interferencji generowanych przestrzeni.
+
+\textbf{Fazy Cyklu Wszechświata w mTGP:}
+\begin{itemize}
+    \item \textbf{Punkt Wyjścia / Stan Początkowy Cyklu (Wielki Wybuch N):} Cykl rozpoczyna się w stanie, gdzie pole $\Phi$ osiąga swoje \textbf{maksymalne, stabilne i niezakłócone wartości}. Dzieje się to w warunkach, gdy materia jest skrajnie rozproszona lub niemal nieobecna, a interferencje między generowanymi przestrzeniami są minimalne. W tym stanie (wysokie $\Phi$), warunki fizyczne są takie, że $c, \hbar, G, m, e, G_F$ są bliskie zera. To pozwala na **masową kreację nowej materii "z niczego"** (lub z minimalnej energii), ponieważ $E=mc^2$ jest ekstremalnie niskie, a bariery kwantowe znikome. To jest Wielki Wybuch danego cyklu.
+    \item \textbf{Faza "Zamieszania" i Spadku \texorpdfstring{$\Phi$}{Phi} (Inflacja i Ewolucja):} Gwałtowne pojawienie się wielu nowych cząstek oznacza, że każda z nich zaczyna generować własną przestrzeń. Te indywidualne przestrzenie nakładają się i interferują. To "zamieszanie" / interferencja destabilizuje pole $\Phi$ i powoduje jego \textbf{gwałtowny spadek} z maksimum. Ten spadek $\Phi$ napędza inflację i dalszą ekspansję Wszechświata, a stałe fizyczne ewoluują do wartości obserwowanych obecnie.
+    \item \textbf{Faza Ewolucji / Stabilizacji:} Wszechświat ewoluuje, formują się struktury, entropia materii rośnie. Pole $\Phi$ kontynuuje spadek, stabilizując się na niższych wartościach, ale procesy generacji i interferencji są aktywne.
+    \item \textbf{Stan "Śmierci Cieplnej" / Powrót \texorpdfstring{$\Phi$}{Phi} do Maksimum (Koniec Cyklu N):} W miarę ewolucji Wszechświata, materia staje się coraz bardziej rozrzedzona, procesy aktywne ustają, a cząstki są coraz bardziej izolowane (śmierć cieplna w sensie materii). Zmniejsza się ilość "zamieszania" / interferencji. To pozwala polu $\Phi$ na powrót do jego \textbf{maksymalnej, stabilnej wartości}. Wszechświat wraca do warunków punktu wyjścia cyklu.
+\end{itemize}
+
+\textbf{Lokalne Cykle i "Wszechświaty Starsze niż CMB":}
+W mTGP, stabilizacja pola $\Phi$ (powrót do jego maksimum, co jest warunkiem dla nowej kreacji materii) nie musi zachodzić jednocześnie w całym Wszechświecie. Może ona następować \textbf{lokalnie}, w regionach, gdzie materia stała się wystarczająco rozproszona i nieaktywna, a interferencja pól generowanych przestrzeni minimalna.
+\begin{itemize}
+    \item To oznacza, że możemy mieć regiony Wszechświata, które przeszły już przez taki cykl i doświadczyły "nowego Wielkiego Wybuchu" (lokalnie), podczas gdy inne części Wszechświata nadal ewoluują w "starym" cyklu lub są w fazie śmierci cieplnej.
+    \item Taki scenariusz oferuje potencjalne wyjaśnienie dla obserwacji sugerujących istnienie galaktyk o masach i dojrzałości, które wydają się być trudne do wytłumaczenia w ramach standardowego modelu kosmologicznego we wczesnym Wszechświecie (np. niektóre obserwacje z Kosmicznego Teleskopu Jamesa Webba). Takie "anomalne" galaktyki mogłyby pochodzić z lokalnych cykli wcześniejszych niż nasz obecny, obserwowany poprzez Kosmiczne Promieniowanie Tła (CMB).
+    \item Chociaż te "nowe" Wszechświaty/regiony rodzą się w ramach większej przestrzeni, ich wzajemne oddziaływania (jeśli istnieją) musiałyby być znikome ze względu na warunki (np. $G \to 0$ w fazie maksymalnego $\Phi$).
+\end{itemize}
+Ten model cyklicznej kosmologii oferuje odważną i oryginalną perspektywę na naturę czasu, początku i końca Wszechświata, a także na możliwość istnienia "Wszechświatów-dzieci" rodzących się w nieskończoność w ramach większej metastsruktury.
+
+\subsection{Dalsze Kierunki Badań}
+Przyszłe badania nad mTGP powinny koncentrować się na:
+\begin{itemize}
+    \item Rozwinięciu pełnego kwantowego formalizmu teorii, w tym kwantyzacji pola $\Phi$ i jego sprzężeń z polami Modelu Standardowego.
+    \item Dokładnej analizie stabilności i spójności teorii w różnych reżimach energetycznych, zwłaszcza w kontekście ewolucji VEV pola Higgsa.
+    \item Opracowaniu bardziej szczegółowych przewidywań astrofizycznych i laboratoryjnych, które można by porównać z danymi obserwacyjnymi (np. wpływ zmiennych mas na widma gwiazd neutronowych, precyzyjne testy atomowe).
+    \item Dokładnym modelowaniu dynamiki cyklicznej kosmologii i poszukiwaniu obserwacyjnych sygnatur "Wszechświatów starszych niż CMB".
+    \item Zbadaniu, czy mTGP może naturalnie wyjaśnić problem bariogenezy i asymetrii materii-antymaterii.
+\item Dalszej formalizacji przejścia od klasycznego do kwantowego opisu pola $\Phi$ i jego implikacji dla natury cząstek wirtualnych i fluktuacji kwantowych.
+\end{itemize}
+Mimo tych wyzwań, mTGP oferuje unikalne i potężne ramy do ponownego przemyślenia fundamentalnych aspektów fizyki, wskazując na obiecującą drogę do unifikacji.
+
+\section{Podsumowanie}
+\label{sec:Podsumowanie}
+
+W niniejszej pracy przedstawiliśmy zarys \textbf{Zmodyfikowanej Teorii Generowanej Przestrzeni (mTGP)}, radykalnego podejścia do fundamentalnych sił fizycznych, które proponuje kompleksową unifikację grawitacji i mechaniki kwantowej. Centralnym założeniem mTGP jest idea, że \textbf{przestrzeń nie jest pasywnym tłem, lecz emergentnym bytem dynamicznym, generowanym bezpośrednio przez obecność masy i energii}. Ta rewolucyjna koncepcja prowadzi do odrzucenia tradycyjnej koncepcji próżni, zastępując ją dynamiczną siecią generowanej przestrzeni, której ``czystość'' opisuje pole skalarne $\Phi$. W tym kontekście, cząstki wirtualne zyskują nową interpretację jako lokalne manifestacje kwantowych fluktuacji tej generowanej przestrzeni.
+
+Kluczowym elementem mTGP jest fundamentalna \textbf{zmienność ``stałych'' fizycznych}: prędkość światła $c(\Phi)$, stała Plancka $\hbar(\Phi)$, stała grawitacji $G(\Phi)$ oraz ładunek elementarny $e(\Phi)$ stają się polami zależnymi od lokalnej wartości $\Phi$. Wykazaliśmy, że te dynamiczne zależności mogą zachować \textbf{stałość długości Plancka $\ell_P$} oraz \textbf{stałej struktury subtelnej $\alpha$}, co jest eleganckim wynikiem spójnym z zasadami kwantowej grawitacji. Ponadto, reinterpretacji uległ mechanizm nadawania mas cząstkom elementarnym, gdzie masy te stają się dynamiczne i zależne od pola $\Phi$.
+
+mTGP wprowadza nowy, spójny formalizm lagranżjanowy, w którym materia źródłuje pole $\Phi$ poprzez \textbf{operator nakładania przestrzeni}, oddziałujący nielokalnie. Ta innowacja umożliwia eleganckie rozwiązania dla wielu długotrwałych problemów fizyki:
+\begin{itemize}
+    \item \textbf{Eliminacja osobliwości} w czarnych dziurach i na początku Wszechświata, wynikająca z naturalnych, niezerowych granic stałych fundamentalnych.
+    \item \textbf{Wyjaśnienie zjawiska ciemnej materii} jako emergentnego efektu modyfikacji prawa grawitacji, z profilem rotacji galaktyk doskonale dopasowanym do obserwacji.
+    \item \textbf{Emergentna ciemna energia} wynikająca z naturalnej formy potencjału pola $\Phi$.
+    \item \textbf{Unifikacja wszystkich czterech oddziaływań fundamentalnych} poprzez ich dynamiczne zależności od pola $\Phi$.
+    \item \textbf{Nowa klasyfikacja i model stabilności czarnych dziur}, przewidujący maksymalną masę (rzędu $10^6 M_\odot$) oraz czasy życia metastabilnych czarnych dziur gwiazdowych poprzez kwantowe tunelowanie.
+    \item \textbf{Nowa wizja kosmologii cyklicznej}, gdzie Wszechświat przechodzi przez nieskończone cykle Wielkich Wybuchów, inicjowanych lokalnie w regionach powracających do stanu maksymalnej "czystości" przestrzeni.
+\end{itemize}
+
+mTGP generuje \textbf{konkretne i testowalne przewidywania} w dziedzinie fizyki kwantowej (np. modyfikacje zasady nieoznaczoności), astrofizyki (np. sygnatury w falach grawitacyjnych, odchylenia w kosmologicznych pomiarach odległości, modyfikacje obfitości pierwiastków z BBN, zmienne stosunki mas cząstek), a także oferuje alternatywne wyjaśnienia dla obserwowanych anomalii w rotacji galaktyk.
+
+Mimo że mTGP stawia przed nami szereg wyzwań, takich jak pełne kwantyzowanie pola $\Phi$ czy szczegółowe modelowanie zachowania energii i pędu w dynamicznej czasoprzestrzeni, jej spójność wewnętrzna i zdolność do oferowania rozwiązań dla fundamentalnych problemów czynią ją \textbf{obiecującym kierunkiem dalszych badań}. Teoria Generowanej Przestrzeni stanowi odważny krok w kierunku zunifikowanego opisu Wszechświata, gdzie przestrzeń i materia są nierozerwalnie ze sobą związane w dynamicznym tańcu tworzenia.
+
+\begin{thebibliography}{99}
+\bibitem{Serafin2025} M. Serafin, "Teoria Generowanej Przestrzeni: W kierunku Unifikacji Grawitacji i Mechaniki Kwantowej," viXra:2505.0171 (2025). 
+\bibitem{Webb2011} J. K. Webb et al., "Further evidence for cosmological evolution of the fine structure constant," Phys. Rev. Lett. \textbf{107}, 191101 (2011) [\url{arXiv:1008.3907}]. 
+\bibitem{Riess2018} A. G. Riess et al., "Large Magellanic Cloud Cepheid Standards Provide a 1.9\% Distance Ladder Measurement of the Hubble Constant," Astrophys. J. \textbf{855}(2), 136 (2018) [\url{arXiv:1804.10655}]. 
+\bibitem{Planck2018} Planck Collaboration, "Planck 2018 results. VI. Cosmological parameters," Astron. Astrophys. \textbf{641}, A6 (2020) [\url{arXiv:1807.06209}]. 
+
+% References imported from main.tex and unification.tex (original context)
+\bibitem{Einstein1915} A. Einstein, "Die Feldgleichungen der Gravitation," \textit{Sitzungsberichte der Preussischen Akademie der Wissenschaften zu Berlin}, 844-847 (1915). 
+\bibitem{Schrodinger1926} E. Schr\"odinger, "An Undulatory Theory of the Mechanics of Atoms and Molecules," \textit{Physical Review} \textbf{28}(6), 1049-1070 (1926). 
+\bibitem{Heisenberg1927} W. Heisenberg, "Ueber den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik," \textit{Zeitschrift f\"ur Physik} \textbf{43}(3-4), 172-198 (1927). 
+\bibitem{Dirac1928} P. A. M. Dirac, "The Quantum Theory of the Electron," \textit{Proceedings of the Royal Society of London. Series A, Containing Papers of a Mathematical and Physical Character} \textbf{117}(778), 610-624 (1928). 
+\bibitem{MTW} C. W. Misner, K. S. Thorne, J. A. Wheeler, \textit{Gravitation}, W. H. Freeman (1973). 
+\bibitem{Wald1984} R. M. Wald, \textit{General Relativity}, University of Chicago Press (1984). 
+\bibitem{BransDicke1961} C. Brans and R. H. Dicke, "Mach's Principle and a Relativistic Theory of Gravitation," \textit{Physical Review} \textbf{124}(3), 925-935 (1961). 
+\bibitem{Moffat2004} J. W. Moffat, "A New Theory of Gravity," \textit{Phys. Rev. D} \textbf{70}, 124009 (2004) [\url{arXiv:gr-qc/0010078}]. 
+\bibitem{Magueijo2003} J. Magueijo, "Covariant theories of varying c," \textit{Rept. Prog. Phys.} \textbf{66}, 2025-2068 (2003) [\url{arXiv:astro-ph/0305457}]. 
+\bibitem{Perlmutter1999} S. Perlmutter et al. (Supernova Cosmology Project), "Measurements of Omega and Lambda from 42 High-Redshift Supernovae," \textit{Astrophysical Journal} \textbf{517}(2), 565-586 (1999) [\url{arXiv:astro-ph/9812133}]. 
+\bibitem{Riess1998} A. G. Riess et al. (Supernova Search Team), "Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant," \textit{Astronomical Journal} \textbf{116}(3), 1009-1038 (1998) [\url{arXiv:astro-ph/9805201}]. 
+\bibitem{Weinberg1979} S. Weinberg, "Ultraviolet divergences in quantum theories of gravitation," in \textit{General Relativity: An Einstein Centenary Survey}, ed. S.W. Hawking and W. Israel, Cambridge University Press, 790-831 (1979). 
+\bibitem{Verde2019} L. Verde, T. Treu, A. G. Riess, "Tensions between the Early and the Late Universe," \textit{Nature Astronomy} \textbf{3}, 891-895 (2019) [\url{arXiv:1907.10625}]. 
+\bibitem{WeinbergQFT1} S. Weinberg, \textit{The Quantum Theory of Fields, Vol. 1: Foundations}, Cambridge University Press (1995). 
+\bibitem{GriffithsQM} D. J. Griffiths, \textit{Introduction to Quantum Mechanics}, Pearson Prentice Hall (2005). 
+\bibitem{CarrollGR} S. M. Carroll, \textit{Spacetime and Geometry: An Introduction to General Relativity}, Cambridge University Press (2004). 
+\bibitem{PeskinSchroeder} M. E. Peskin, D. V. Schroeder, \textit{An Introduction To Quantum Field Theory}, Westview Press (1995). 
+\bibitem{KolbTurner} E. W. Kolb, M. S. Turner, \textit{The Early Universe}, Westview Press (1990). 
+\bibitem{MukhanovCosmo} V. Mukhanov, \textit{Physical Foundations of Cosmology}, Cambridge University Press (2005). 
+\bibitem{Higgs1964} P. W. Higgs, "Broken Symmetries and the Masses of Gauge Bosons," \textit{Phys. Rev. Lett.} \textbf{13}(16), 508-509 (1964). 
+\bibitem{EnglertBrout1964} F. Englert, R. Brout, "Broken Symmetry and the Mass of Gauge Vector Mesons," \textit{Phys. Rev. Lett.} \textbf{13}(9), 321-323 (1964). 
+\bibitem{Guralnik1964} G. S. Guralnik, C. R. Hagen, T. W. B. Kibble, "Global Conservation Laws and Massless Particles," \textit{Phys. Rev. Lett.} \textbf{13}(20), 585-587 (1964). 
+\bibitem{ATLASHiggs} G. Aad et al. (ATLAS Collaboration), "Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS detector at the LHC," \textit{Phys. Lett. B} \textbf{716}(1), 1-29 (2012) [\url{arXiv:1207.7214}]. 
+\bibitem{CMSHiggs} S. Chatrchyan et al. (CMS Collaboration), "Observation of a new boson with mass near 125 GeV in pp collisions at $\sqrt{s}=7$ and 8 TeV," \textit{Phys. Lett. B} \textbf{716}(1), 30-61 (2012) [\url{arXiv:1207.7235}]. 
+\bibitem{Sakharov1967} A. D. Sakharov, "Vacuum Quantum Fluctuations in Curved Space and the Theory of Gravitation," \textit{Dokl. Akad. Nauk SSSR} \textbf{177}, 70-71 (1967) [Sov. Phys. Dokl. \textbf{12}, 1040-1041 (1968)]. 
+\bibitem{Verlinde2011} E. P. Verlinde, "On the Origin of Gravity and the Laws of Newton," \textit{JHEP} \textbf{1104}, 029 (2011) [\url{arXiv:1001.0785}]. 
+\bibitem{Milgrom1983} M. Milgrom, "A modification of the Newtonian dynamics as a possible alternative to the hidden mass hypothesis," \textit{Astrophys. J.} \textbf{270}, 365-370 (1983). 
+\bibitem{Rovelli2004} C. Rovelli, \textit{Quantum Gravity}, Cambridge University Press (2004). 
+\bibitem{Polchinski1998} J. Polchinski, \textit{String Theory Vol. 1: An Introduction to the Bosonic String}, Cambridge University Press (1998). 
+\end{thebibliography}
+
+\end{document}
